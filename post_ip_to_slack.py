@@ -1,12 +1,13 @@
 import netifaces as ni
 import slackweb
-slack = slackweb.Slack(url="https://hooks.slack.com/services/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")
+slack = slackweb.Slack(url="<Your_Slack_Hook_URL>")
 message = "RPi has started up. Ip addresses:\n"
 
+time.sleep(5)
 print "Finding IP addresses"
 while ni.ifaddresses('wlan0').get(ni.AF_INET)[0].get('addr') is None:
     print "Waiting for WLan to get an IP. Sleeping for 5 seconds."
-    time.sleep(5)
+
 
 for interface in ni.interfaces():
     addresses = ni.ifaddresses(interface)
